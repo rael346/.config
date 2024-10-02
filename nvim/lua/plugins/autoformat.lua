@@ -32,6 +32,7 @@ return {
 				go = { "goimports-reviser", "gofumpt", "golines" },
 				astro = { "prettier" },
 				templ = { "templ" },
+				c = { "clang-format" },
 			},
 			formatters = {
 				prettier = {
