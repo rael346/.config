@@ -20,3 +20,4 @@ fnm env --use-on-cd | source
 set -g fish_greeting
 # change the default shell of tmux
 set -gx SHELL "/opt/homebrew/bin/fish"
+set -Ux EDITOR nvim

@@ -14,23 +14,7 @@ return {
 				"vimdoc",
 
 				"json",
-				"javascript",
-				"typescript",
-				"tsx",
-				"yaml",
-				"html",
-				"css",
 				"gitignore",
-
-				"go",
-				"gomod",
-				"gosum",
-				"gotmpl",
-				"gowork",
-				"templ",
-
-				"python",
-				"astro",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

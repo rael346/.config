@@ -1,6 +1,13 @@
 return {
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				clangd = {
+					mason = false,
+				},
+			},
+		},
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
@@ -123,35 +130,6 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				clangd = {},
-				gopls = {
-					gofumpt = true,
-				},
-				-- pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				ts_ls = {},
-				astro = {},
-				templ = {},
-				html = {
-					filetypes = { "html", "templ" },
-				},
-				htmx = {
-					filetypes = { "html", "templ" },
-				},
-				tailwindcss = {
-					filetypes = { "html", "templ", "astro", "javascript", "typescript", "react" },
-					settings = {
-						tailwindCSS = {
-							includeLanguages = {
-								templ = "html",
-							},
-						},
-					},
-				},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
@@ -174,7 +152,9 @@ return {
 			--    :Mason
 			--
 			--  You can press `g?` for help in this menu.
-			require("mason").setup()
+			require("mason").setup({
+				PATH = "append",
+			})
 
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
@@ -196,6 +176,7 @@ return {
 					end,
 				},
 			})
+			require("lspconfig")["clangd"].setup({})
 		end,
 	},
 }
