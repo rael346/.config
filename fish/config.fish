@@ -15,7 +15,7 @@ starship init fish | source
 enable_transience
 fzf --fish | source
 
-fnm env --use-on-cd | source
+fnm env --use-on-cd --shell fish | source
 # remove fish greeting when opening a new session
 set -g fish_greeting
 # change the default shell of tmux

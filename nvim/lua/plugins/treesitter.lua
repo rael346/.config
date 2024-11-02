@@ -12,6 +12,7 @@ return {
 				"markdown",
 				"vim",
 				"vimdoc",
+				"python",
 
 				"json",
 				"gitignore",

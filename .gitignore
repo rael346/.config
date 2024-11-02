@@ -8,3 +8,11 @@ texstudio
 yarn
 zsh
 .DS_Store
+pulse
+user-dirs.dirs
+user-dirs.locale
+wayfire.ini
+wf-panel-pi.ini
+dconf
+lxterminal
+gtk-3.0
