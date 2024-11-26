@@ -62,21 +62,22 @@ return {
 		},
 	},
 
-	{ --Switching tab between nvim and tmux pane
-		"christoomey/vim-tmux-navigator",
-		lazy = false,
-		cmd = {
-			"TmuxNavigateLeft",
-			"TmuxNavigateDown",
-			"TmuxNavigateUp",
-			"TmuxNavigateRight",
-		},
-		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-		},
+	{
+		"mrjones2014/smart-splits.nvim",
+		config = function()
+			local smart_split = require("smart-splits")
+
+			vim.keymap.set("n", "<A-h>", smart_split.resize_left)
+			vim.keymap.set("n", "<A-j>", smart_split.resize_down)
+			vim.keymap.set("n", "<A-k>", smart_split.resize_up)
+			vim.keymap.set("n", "<A-l>", smart_split.resize_right)
+
+			vim.keymap.set("n", "<C-h>", smart_split.move_cursor_left)
+			vim.keymap.set("n", "<C-j>", smart_split.move_cursor_down)
+			vim.keymap.set("n", "<C-k>", smart_split.move_cursor_up)
+			vim.keymap.set("n", "<C-l>", smart_split.move_cursor_right)
+			vim.keymap.set("n", "<C-\\>", smart_split.move_cursor_previous)
+		end,
 	},
 
 	{ -- switching between buffers

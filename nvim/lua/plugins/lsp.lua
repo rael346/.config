@@ -104,7 +104,7 @@ return {
 					-- This may be unwanted, since they displace some of your code
 					if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
 						map("<leader>th", function()
-							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
 					end
 				end,
@@ -124,26 +124,22 @@ return {
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {},
+				-- ["clang-format"] = {},
+				neocmake = {},
+
 				gopls = {
 					gofumpt = true,
 				},
-				-- pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				ts_ls = {},
-				astro = {},
 				templ = {},
+
+				pyright = {},
+
+				ts_ls = {},
 				html = {
 					filetypes = { "html", "templ" },
 				},
-				htmx = {
-					filetypes = { "html", "templ" },
-				},
 				tailwindcss = {
-					filetypes = { "html", "templ", "astro", "javascript", "typescript", "react" },
+					filetypes = { "html", "templ", "javascript", "typescript", "react" },
 					settings = {
 						tailwindCSS = {
 							includeLanguages = {

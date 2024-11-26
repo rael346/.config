@@ -26,30 +26,13 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
+				python = { "ruff_format" },
+				html = { { "prettierd" } },
+				javascript = { { "prettierd" } },
+				typescript = { { "prettierd" } },
 				go = { "goimports-reviser", "gofumpt", "golines" },
-				astro = { "prettier" },
 				templ = { "templ" },
 				c = { "clang-format" },
-			},
-			formatters = {
-				prettier = {
-					args = function(self, ctx)
-						if vim.endswith(ctx.filename, ".astro") then
-							return {
-								"--stdin-filepath",
-								"$FILENAME",
-								"--plugin",
-								"prettier-plugin-astro",
-								"--plugin",
-								"prettier-plugin-tailwindcss",
-							}
-						end
-						return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-tailwindcss" }
-					end,
-				},
 			},
 		},
 	},
