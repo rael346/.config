@@ -2,7 +2,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.color_scheme = "Nord (base16)"
-config.font = wezterm.font("Iosevka Nerd Font")
+config.font = wezterm.font("IosevkaTerm Nerd Font")
+config.default_prog = { "/opt/homebrew/bin/fish" }
 
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"

@@ -1,4 +1,4 @@
-require("core.api")
+require("core.autocmds")
 require("core.options")
 require("core.keymaps")
 
@@ -13,6 +13,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		lazyrepo,
 		lazypath,
 	})
+	if vim.v.shell_error ~= 0 then
+		error("Error cloning lazy.nvim:\n" .. out)
+	end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 

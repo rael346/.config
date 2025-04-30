@@ -1,7 +1,3 @@
-fish_add_path "/opt/homebrew/opt/openblas/lib"
-fish_add_path "/opt/homebrew/opt/openblas/include"
-fish_add_path "/opt/homebrew/opt/openblas/lib/pkgconfig"
-
 fish_add_path "/opt/homebrew/bin"
 fish_add_path "/opt/homebrew/sbin"
 fish_add_path "/usr/local/bin"
@@ -14,7 +10,7 @@ end
 starship init fish | source
 enable_transience
 fzf --fish | source
-fnm env --use-on-cd | source
+fnm env --use-on-cd --version-file-strategy=recursive | source
 
 # remove fish greeting when opening a new session
 set -g fish_greeting
@@ -27,8 +23,8 @@ bind -M normal yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
 # >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-set -gx MAMBA_EXE "/opt/homebrew/bin/micromamba"
-set -gx MAMBA_ROOT_PREFIX "/Users/duytran/micromamba"
-$MAMBA_EXE shell hook --root-prefix $MAMBA_ROOT_PREFIX | source
+# !! Contents within this block are managed by 'mamba shell init' !!
+set -gx MAMBA_EXE "/opt/homebrew/opt/micromamba/bin/mamba"
+set -gx MAMBA_ROOT_PREFIX "/Users/duytran/mamba"
+$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
 # <<< mamba initialize <<<

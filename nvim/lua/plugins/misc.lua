@@ -51,11 +51,7 @@ return {
 
 			-- Document existing key chains
 			spec = {
-				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			},
@@ -80,25 +76,6 @@ return {
 		end,
 	},
 
-	{ -- switching between buffers
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-		config = function()
-			local harpoon = require("harpoon")
-
-			vim.keymap.set("n", "<leader>a", function()
-				harpoon:list():add()
-			end)
-			vim.keymap.set("n", "<C-q>", function()
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-			end)
-		end,
-	},
-
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -116,14 +93,21 @@ return {
 					},
 				},
 
-				-- presets = {
-				-- 	bottom_search = true, -- use a classic bottom cmdline for search
-				-- 	command_palette = true, -- position the cmdline and popupmenu together
-				-- 	long_message_to_split = true, -- long messages will be sent to a split
-				-- 	inc_rename = false, -- enables an input dialog for inc-rename.nvim
-				-- 	lsp_doc_border = false, -- add a border to hover docs and signature help
-				-- },
+				presets = {
+					-- bottom_search = true, -- use a classic bottom cmdline for search
+					-- command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					-- inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					-- lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
 			})
 		end,
+	},
+
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
 }
