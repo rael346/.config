@@ -17,7 +17,7 @@ config.color_scheme = "Nord (base16)"
 config.font = wezterm.font("IosevkaTerm Nerd Font")
 config.default_prog = { "/opt/homebrew/bin/fish" }
 if is_windows() then
-	config.default_prog = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+	config.default_prog = { "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" }
 end
 
 local function is_vim(pane)
