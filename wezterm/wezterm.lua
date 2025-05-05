@@ -1,9 +1,24 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- local is_linux = function()
+-- 	return wezterm.target_triple:find("linux") ~= nil
+-- end
+--
+-- local is_darwin = function()
+-- 	return wezterm.target_triple:find("darwin") ~= nil
+-- end
+
+local is_windows = function()
+	return wezterm.target_triple:find("windows") ~= nil
+end
+
 config.color_scheme = "Nord (base16)"
 config.font = wezterm.font("IosevkaTerm Nerd Font")
 config.default_prog = { "/opt/homebrew/bin/fish" }
+if is_windows() then
+	config.default_prog = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+end
 
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
