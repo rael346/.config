@@ -60,4 +60,4 @@ vim.opt.confirm = true
 vim.opt.inccommand = "split"
 
 -- obsidian
-vim.opt.conceallevel = 1
+-- vim.opt.conceallevel = 1

@@ -43,6 +43,7 @@ return {
 			},
 		},
 		opts = {
+			-- log_level = vim.log.levels.DEBUG,
 			notify_on_error = false,
 			format_on_save = function(bufnr)
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -60,16 +61,25 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "ruff_format" },
+
+				python = { "ruff_format", "ruff_organize_imports" },
+
 				html = { "prettierd" },
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
-				go = { "goimports-reviser", "gofumpt", "golines", stop_after_first = false },
+				astro = { "prettierd" },
+				json = { "prettierd" },
+				css = { "prettierd" },
+
+				go = { "goimports-reviser", "gofumpt", stop_after_first = false },
 				templ = { "templ" },
+
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				cmake = { "gersemi" },
+
 				typst = { "typstyle" },
+				zig = { "zig" },
 			},
 		},
 		config = function(_, opts)

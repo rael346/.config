@@ -29,19 +29,38 @@ return {
 
 			require("mini.icons").setup()
 
-			require("mini.visits").setup()
-			local visits = require("mini.visits")
-			vim.keymap.set("n", "<leader>va", function()
-				visits.add_label("main")
-			end, { desc = "[A]dd label to main" })
-
-			vim.keymap.set("n", "<leader>vr", function()
-				visits.remove_label("main")
-			end, { desc = "[R]emove label from main" })
-
-			vim.keymap.set("n", "<leader>vp", function()
-				visits.select_path("", { filter = "main" })
-			end, { desc = "[V]isits [P]aths in main" })
+			-- require("mini.visits").setup()
+			-- local visits = require("mini.visits")
+			-- vim.keymap.set("n", "<leader>va", function()
+			-- 	visits.add_label("main")
+			-- end, { desc = "[A]dd label to main" })
+			--
+			-- vim.keymap.set("n", "<leader>vr", function()
+			-- 	visits.remove_label("main")
+			-- end, { desc = "[R]emove label from main" })
+			--
+			-- vim.keymap.set("n", "<leader>vp", function()
+			-- 	visits.select_path("", { filter = "main" })
+			-- end, { desc = "[V]isits [P]aths in main" })
+			--
+			-- vim.keymap.set("n", "<leader>vP", function()
+			-- 	visits.select_path(nil, { filter = "main" })
+			-- end, { desc = "[V]isits [P]aths in main (cwd)" })
+			--
+			-- -- Iterate based on recency
+			-- local sort_latest = visits.gen_sort.default({ recency_weight = 1 })
+			-- local map_iterate_core = function(lhs, direction, desc)
+			-- 	local opts = { filter = "main", sort = sort_latest, wrap = true }
+			-- 	local rhs = function()
+			-- 		visits.iterate_paths(direction, vim.fn.getcwd(), opts)
+			-- 	end
+			-- 	vim.keymap.set("n", lhs, rhs, { desc = desc })
+			-- end
+			--
+			-- map_iterate_core("[{", "last", "Core label (earliest)")
+			-- map_iterate_core("[[", "forward", "Core label (earlier)")
+			-- map_iterate_core("]]", "backward", "Core label (later)")
+			-- map_iterate_core("]}", "first", "Core label (latest)")
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,

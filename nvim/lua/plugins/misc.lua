@@ -1,6 +1,4 @@
 return {
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-
 	{ -- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -76,6 +74,33 @@ return {
 		end,
 	},
 
+	{ -- switching between buffers
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		config = function()
+			local harpoon = require("harpoon")
+
+			vim.keymap.set("n", "<leader>a", function()
+				harpoon:list():add()
+			end, { desc = "Harpoon [A]dd" })
+
+			vim.keymap.set("n", "<leader>m", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end, { desc = "Harpoon [M]enu" })
+
+			vim.keymap.set("n", "<leader>p", function()
+				harpoon:list():prev()
+			end, { desc = "Harpoon [P]revious buffer" })
+			vim.keymap.set("n", "<leader>n", function()
+				harpoon:list():next()
+			end, { desc = "Harpoon [N]ext buffer" })
+		end,
+	},
+
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -98,7 +123,7 @@ return {
 					-- command_palette = true, -- position the cmdline and popupmenu together
 					long_message_to_split = true, -- long messages will be sent to a split
 					-- inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					-- lsp_doc_border = false, -- add a border to hover docs and signature help
+					lsp_doc_border = true, -- add a border to hover docs and signature help
 				},
 			})
 		end,
@@ -109,5 +134,18 @@ return {
 		lazy = false, -- or ft = 'typst'
 		version = "1.*",
 		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+	},
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				"lazy.nvim",
+			},
+		},
 	},
 }
