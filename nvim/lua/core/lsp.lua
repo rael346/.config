@@ -1,3 +1,5 @@
+-- Testing Neovim built in lsp config
+-- nvim-lspconfig is still needed since some lsp needs custom logic
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 vim.lsp.config.lua_ls = {
 	cmd = { "lua-language-server" },

@@ -1,7 +1,6 @@
 require("core.autocmds")
 require("core.options")
 require("core.keymaps")
-require("core.lsp")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
