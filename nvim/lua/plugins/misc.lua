@@ -74,33 +74,6 @@ return {
 		end,
 	},
 
-	{ -- switching between buffers
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-		config = function()
-			local harpoon = require("harpoon")
-
-			vim.keymap.set("n", "<leader>a", function()
-				harpoon:list():add()
-			end, { desc = "Harpoon [A]dd" })
-
-			vim.keymap.set("n", "<leader>m", function()
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-			end, { desc = "Harpoon [M]enu" })
-
-			vim.keymap.set("n", "<leader>p", function()
-				harpoon:list():prev()
-			end, { desc = "Harpoon [P]revious buffer" })
-			vim.keymap.set("n", "<leader>n", function()
-				harpoon:list():next()
-			end, { desc = "Harpoon [N]ext buffer" })
-		end,
-	},
-
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
