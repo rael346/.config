@@ -16,6 +16,8 @@ fnm env --use-on-cd --version-file-strategy=recursive | source
 set -g fish_greeting
 # change the default shell of tmux
 set -gx SHELL "/opt/homebrew/bin/fish"
+# change the editor of zellij
+set -gx EDITOR "/opt/homebrew/bin/nvim"
 
 set -g fish_key_bindings fish_vi_key_bindings
 bind -M visual y fish_clipboard_copy

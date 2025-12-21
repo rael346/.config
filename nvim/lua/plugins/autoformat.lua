@@ -65,11 +65,13 @@ return {
 				python = { "ruff_format", "ruff_organize_imports" },
 
 				html = { "prettierd" },
-				javascript = { "prettierd" },
-				typescript = { "prettierd" },
-				astro = { "prettierd" },
-				json = { "prettierd" },
-				css = { "prettierd" },
+				javascript = { "biome" },
+				typescript = { "biome" },
+				typescriptreact = { "biome" },
+				astro = { "biome" },
+				json = { "biome" },
+				css = { "biome" },
+				markdown = { "prettierd" },
 
 				go = { "goimports-reviser", "gofumpt", stop_after_first = false },
 				templ = { "templ" },

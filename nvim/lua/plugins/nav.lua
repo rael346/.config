@@ -15,6 +15,7 @@ return {
 				},
 			})
 
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 			vim.keymap.set("n", "<space>-", require("oil").toggle_float, { desc = "Open parent dir in float window" })
 		end,
 	},
@@ -29,7 +30,9 @@ return {
 			vim.keymap.set("n", "<leader>sh", fzf.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", fzf.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", fzf.files, { desc = "[S]earch [F]iles" })
-
+			vim.keymap.set("n", "<leader>sm", function()
+				fzf.marks({ marks = "%l" })
+			end, { desc = "[S]earch [M]arks" })
 			vim.keymap.set("n", "<leader>ss", fzf.builtin, { desc = "[S]earch [S]elect" })
 			vim.keymap.set("n", "<leader>sw", fzf.grep_cword, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>sg", fzf.live_grep_native, { desc = "[S]earch by [G]rep" })
@@ -37,6 +40,7 @@ return {
 			vim.keymap.set("n", "<leader>sr", fzf.resume, { desc = "[S]earch [R]esume" })
 			vim.keymap.set("n", "<leader>s.", fzf.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", fzf.buffers, { desc = "[ ] Find existing buffers" })
+			vim.keymap.set("n", "<leader>/", fzf.grep_curbuf, { desc = "[ ] Search current buffers" })
 
 			-- Shortcut for searching your Neovim configuration files
 			vim.keymap.set("n", "<leader>sn", function()
@@ -62,12 +66,38 @@ return {
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end, { desc = "Harpoon [M]enu" })
 
-			vim.keymap.set("n", "<leader>p", function()
+			vim.keymap.set("n", "<C-p>", function()
 				harpoon:list():prev()
 			end, { desc = "Harpoon [P]revious buffer" })
-			vim.keymap.set("n", "<leader>n", function()
+
+			vim.keymap.set("n", "<C-n>", function()
 				harpoon:list():next()
 			end, { desc = "Harpoon [N]ext buffer" })
 		end,
+	},
+
+	{
+		"obsidian-nvim/obsidian.nvim",
+		version = "*",
+		ft = "markdown",
+		-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+		-- event = {
+		--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+		--   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+		--   -- refer to `:h file-pattern` for more examples
+		--   "BufReadPre path/to/my-vault/*.md",
+		--   "BufNewFile path/to/my-vault/*.md",
+		-- },
+		---@module 'obsidian'
+		---@type obsidian.config
+		opts = {
+			legacy_commands = false,
+			workspaces = {
+				{
+					name = "personal",
+					path = "~/Documents/second-brain/",
+				},
+			},
+		},
 	},
 }

@@ -159,10 +159,12 @@ return {
 				templ = {},
 
 				-- Python
-				pyright = {},
+				-- pyright = {},
+				basedpyright = {},
 
 				-- JS/TS
-				ts_ls = {},
+				-- ts_ls = {},
+				biome = {},
 				html = {
 					filetypes = { "html", "templ" },
 				},
@@ -179,7 +181,17 @@ return {
 
 				lua_ls = {},
 
-				zls = {},
+				-- harper_ls = {
+				-- 	filetypes = { "gitcommit", "markdown" },
+				-- 	settings = {
+				-- 		["harper-ls"] = {
+				-- 			linters = {
+				-- 				SentenceCapitalization = false,
+				-- 				SpellCheck = false,
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -200,10 +212,14 @@ return {
 				"stylua", -- Used to format Lua code
 				"clang-format",
 			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			-- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+			vim.tbl_extend("error", servers, {
+				sourcekit = {},
+			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+				ensure_installed = {},
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
@@ -216,6 +232,9 @@ return {
 					end,
 				},
 			})
+
+			require("lspconfig")["zls"].setup(capabilities)
+			require("lspconfig")["rust_analyzer"].setup(capabilities)
 		end,
 	},
 }

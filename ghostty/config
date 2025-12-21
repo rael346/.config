@@ -1,0 +1,3 @@
+theme = Nord
+font-family = "IosevkaTerm Nerd Font"
+command = /opt/homebrew/bin/fish
