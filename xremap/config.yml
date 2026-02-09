@@ -1,0 +1,28 @@
+modmap:
+  - name: OG
+    remap: 
+      KEY_CAPSLOCK: KEY_ESC
+      KEY_ESC: KEY_CAPSLOCK
+keymap: 
+  - name: Mimic MacOS cmd
+    exact_match: true
+    remap:
+      M-c: C-c 
+      M-v: C-v 
+      M-f: C-f 
+      M-KEY_BACKSPACE: C-KEY_BACKSPACE 
+      M-KEY_EQUAL: C-KEY_EQUAL
+      M-KEY_MINUS: C-KEY_MINUS
+
+  - name: Workaround for Zellij to keep consistency with Mac setup
+    exact_match: true
+    remap:
+      M-1: SUPER-M-1
+      M-2: SUPER-M-2
+      M-3: SUPER-M-3
+      M-4: SUPER-M-4
+      M-5: SUPER-M-5
+      M-6: SUPER-M-6
+      M-7: SUPER-M-7
+      M-8: SUPER-M-8
+      M-9: SUPER-M-9

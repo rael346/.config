@@ -11,9 +11,6 @@ keybinds clear-defaults=true {
 		bind "Ctrl k" { MoveFocus "up"; }
 		bind "Ctrl l" { MoveFocus "right"; }
 
-		bind "Super t" { NewTab; SwitchToMode "normal"; }
-		bind "Super x" { CloseTab; SwitchToMode "normal"; }
-		bind "Super r" { SwitchToMode "renametab"; TabNameInput 0; }
 
 		// workaround for macos CMD + <numbers>
 		bind "Super Alt 1" { GoToTab 1; SwitchToMode "normal"; }
@@ -101,6 +98,10 @@ keybinds clear-defaults=true {
 		bind "L" { Resize "Increase right"; }
 
 		bind "s" { SwitchToMode "scroll"; }
+
+		bind "t" { NewTab; SwitchToMode "normal"; }
+		bind "x" { CloseTab; SwitchToMode "normal"; }
+		bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
 	}
 
 	shared_except "locked" {

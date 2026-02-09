@@ -11,3 +11,5 @@
 !/zellij
 !/ghostty
 !/starship.toml
+!/xremap/
+!/systemd/user/xremap.service
