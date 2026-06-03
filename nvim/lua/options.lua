@@ -74,6 +74,9 @@ vim.opt.smartcase = true
 -- set border on floating windows
 vim.opt.winborder = "rounded"
 
+-- disable swapfile
+vim.opt.swapfile = false
+
 -- -- Preview substitutions live, as you type!
 -- vim.opt.inccommand = 'split'
 

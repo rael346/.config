@@ -82,8 +82,10 @@ require("mini.statusline").setup({ use_icons = vim.g.have_nerd_font })
 require("mini.files").setup({
   mappings = {
     show_help = "?",
+    go_in = "",
     go_in_plus = "<cr>",
-    go_out_plus = "<tab>",
+    go_out = "",
+    go_out_plus = "-",
   },
 })
 

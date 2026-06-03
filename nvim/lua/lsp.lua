@@ -24,13 +24,17 @@ local function on_attach(client, bufnr)
     vim.keymap.set(mode, lhs, rhs, { desc = "LSP: " .. desc, buffer = bufnr })
   end
 
-  keymap("[e", function()
-    vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
-  end, "Previous error")
+  keymap(
+    "[e",
+    function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end,
+    "Previous error"
+  )
 
-  keymap("]e", function()
-    vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
-  end, "Next error")
+  keymap(
+    "]e",
+    function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end,
+    "Next error"
+  )
 
   if client:supports_method("textDocument/codeAction") then
     keymap("gra", FzfLua.lsp_code_actions, "[G]oto Code [A]ction", { "n", "x" })
@@ -59,13 +63,9 @@ local function on_attach(client, bufnr)
   end
 
   if client:supports_method("textDocument/definition") then
-    keymap("grd", function()
-      FzfLua.lsp_definitions({ jump1 = true })
-    end, "[G]oto [D]efinition")
+    keymap("grd", function() FzfLua.lsp_definitions({ jump1 = true }) end, "[G]oto [D]efinition")
 
-    keymap("grD", function()
-      FzfLua.lsp_definitions({ jump1 = false })
-    end, "Peek [D]efinition")
+    keymap("grD", function() FzfLua.lsp_definitions({ jump1 = false }) end, "Peek [D]efinition")
   end
 
   if client:supports_method("textDocument/signatureHelp") then
@@ -166,9 +166,7 @@ local show_handler = assert(vim.diagnostic.handlers.virtual_text.show)
 local hide_handler = vim.diagnostic.handlers.virtual_text.hide
 vim.diagnostic.handlers.virtual_text = {
   show = function(ns, bufnr, diagnostics, opts)
-    table.sort(diagnostics, function(diag1, diag2)
-      return diag1.severity > diag2.severity
-    end)
+    table.sort(diagnostics, function(diag1, diag2) return diag1.severity > diag2.severity end)
     return show_handler(ns, bufnr, diagnostics, opts)
   end,
   hide = hide_handler,
@@ -224,9 +222,7 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 
     local servers = vim
       .iter(vim.api.nvim_get_runtime_file("lsp/*.lua", true))
-      :map(function(file)
-        return vim.fn.fnamemodify(file, ":t:r")
-      end)
+      :map(function(file) return vim.fn.fnamemodify(file, ":t:r") end)
       :totable()
     vim.lsp.enable(servers)
   end,
