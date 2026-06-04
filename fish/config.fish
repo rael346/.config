@@ -24,11 +24,11 @@ set -g fish_greeting
 switch (uname)
   case Darwin
     set -gx SHELL "/opt/homebrew/bin/fish"
-    set -gx EDITOR "/opt/homebrew/bin/nvim"
   case Linux
     set -gx SHELL "/usr/bin/fish"
-    set -gx EDITOR "/usr/local/bin/nvim"
 end 
+
+set -gx EDITOR "/usr/local/bin/nvim"
 
 set -g fish_key_bindings fish_vi_key_bindings
 bind -M visual y fish_clipboard_copy
