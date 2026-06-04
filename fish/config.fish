@@ -7,7 +7,7 @@ switch (uname)
     fish_add_path "/opt/homebrew/bin"
     fish_add_path "/opt/homebrew/sbin"
   case Linux
-    fish_add_path "~/program-src/lua-language-server/bin"
+    fish_add_path ~/program-src/lua-language-server/bin
 end 
 
 function starship_transient_rprompt_func
@@ -38,7 +38,7 @@ bind p fish_clipboard_paste
 set -gx EMSDK_QUIET 1
 switch (uname)
   case Darwin
-    source "~/Desktop/projects/emsdk/emsdk_env.fish"
+    source ~/Desktop/projects/emsdk/emsdk_env.fish
   case Linux
 end 
 
