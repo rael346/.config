@@ -29,19 +29,21 @@ require("conform").setup({
 
     c = { "clang-format" },
     cpp = { "clang-format" },
-    -- cmake = { "gersemi" },
+    cmake = { "neocmake" },
 
     typst = { "typstyle" },
     zig = { "zig" },
     bib = { "bibtex-tidy" },
+    toml = { "taplo" },
+  },
+  formatters = {
+    neocmake = {
+      command = "neocmakelsp",
+      args = { "format", "$FILENAME" },
+    },
   },
 })
 
--- vim.api.nvim_create_autocmd('BufWritePre', {
---   once = true,
---   callback = function() end,
--- })
---
 vim.g.autoformat = true
 vim.api.nvim_create_user_command("ToggleFormat", function()
   vim.g.autoformat = not vim.g.autoformat
