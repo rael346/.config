@@ -29,7 +29,8 @@ require("conform").setup({
 
     c = { "clang-format" },
     cpp = { "clang-format" },
-    cmake = { "neocmake" },
+    cuda = { "clang-format" },
+    -- cmake = { "neocmake" },
 
     typst = { "typstyle" },
     zig = { "zig" },

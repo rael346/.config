@@ -16,7 +16,12 @@ return {
     Lua = {
       workspace = {
         checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file("", true),
+        -- library = vim.api.nvim_get_runtime_file("", true),
+        library = {
+          vim.env.VIMRUNTIME,
+          -- For LSP Settings Type Annotations: https://github.com/neovim/nvim-lspconfig#lsp-settings-type-annotations
+          vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1],
+        },
       },
       completion = { callSnippet = "Replace" },
       -- Using stylua for formatting.
@@ -27,6 +32,10 @@ return {
       },
       runtime = {
         version = "LuaJIT",
+        path = {
+          "lua/?.lua",
+          "lua/?/init.lua",
+        },
       },
     },
   },

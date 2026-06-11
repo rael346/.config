@@ -12,6 +12,6 @@ return {
     "--fallback-style=none",
     "--function-arg-placeholders=false",
   },
-  filetypes = { "c", "cpp", "h", "hpp" },
+  filetypes = { "c", "cpp", "cuda", "objc", "objcpp" },
   root_markers = { ".clangd", ".clang-format", ".git" },
 }

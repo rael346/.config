@@ -16,7 +16,7 @@ end
 starship init fish | source
 enable_transience
 fzf --fish | source
-# fnm env --use-on-cd --version-file-strategy=recursive | source
+fnm env --use-on-cd --version-file-strategy=recursive | source
 
 # remove fish greeting when opening a new session
 set -g fish_greeting

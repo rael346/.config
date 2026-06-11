@@ -15,6 +15,7 @@ local filetypes = {
   "bash",
   "c",
   "cpp",
+  "cuda",
   "diff",
   "lua",
   "luadoc",
