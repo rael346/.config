@@ -17,11 +17,13 @@ return {
       workspace = {
         checkThirdParty = false,
         -- library = vim.api.nvim_get_runtime_file("", true),
-        library = {
-          vim.env.VIMRUNTIME,
-          -- For LSP Settings Type Annotations: https://github.com/neovim/nvim-lspconfig#lsp-settings-type-annotations
-          vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1],
-        },
+        -- library = {
+        --   vim.env.VIMRUNTIME,
+        -- },
+        library = vim.tbl_filter(
+          function(d) return not d:match(vim.fn.stdpath("config") .. "/?a?f?t?e?r?") end,
+          vim.api.nvim_get_runtime_file("", true)
+        ),
       },
       completion = { callSnippet = "Replace" },
       -- Using stylua for formatting.

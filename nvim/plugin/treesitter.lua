@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 local treesitter = require("nvim-treesitter")
 treesitter.setup()
+
 local filetypes = {
   "bash",
   "c",
@@ -44,6 +45,7 @@ local filetypes = {
   "astro",
   "typst",
   "regex",
+  "rust",
 
   "toml",
   "cmake",

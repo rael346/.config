@@ -36,6 +36,7 @@ require("conform").setup({
     zig = { "zig" },
     bib = { "bibtex-tidy" },
     toml = { "taplo" },
+    rust = { "rustfmt" },
   },
   formatters = {
     neocmake = {
