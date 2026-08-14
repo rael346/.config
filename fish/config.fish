@@ -42,3 +42,7 @@ switch (uname)
   case Linux
 end 
 
+set -gx PATH "/home/duy-tran/.pixi/bin" $PATH
+# pixi env use its local clear
+# so this is to go around that problem
+alias clear="TERM=xterm /usr/bin/clear"

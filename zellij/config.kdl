@@ -110,25 +110,25 @@ keybinds clear-defaults=true {
 	shared_except "locked" {
     bind "Ctrl h" {
 			MessagePlugin "vim-navigator" {
-				name "move_focus_or_tab";
+				name "move_focus";
 				payload "left";
 			};
     }
     bind "Ctrl j" {
 			MessagePlugin "vim-navigator" {
-				name "move_focus_or_tab";
+				name "move_focus";
 				payload "down";
 			};
     }
     bind "Ctrl k" {
 			MessagePlugin "vim-navigator" {
-				name "move_focus_or_tab";
+				name "move_focus";
 				payload "up";
 			};
     }
     bind "Ctrl l" {
 			MessagePlugin "vim-navigator" {
-				name "move_focus_or_tab";
+				name "move_focus";
 				payload "right";
 			};
     }
